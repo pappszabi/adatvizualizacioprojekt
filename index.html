@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RON árfolyamának összehasonlítása EUR és USD árfolyamával</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #6598c2, #d1879f);
+        }
+        
+        header {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        
+        main {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .chart-container {
+            width: 80%;
+            height: 500px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            padding: 1rem;
+        }
+        
+        .chart-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .chart-btn {
+            padding: 0.75rem 1.5rem;
+            background-color: #2196f3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .chart-btn:hover {
+            background-color: #0d8bf2;
+        }
+        
+        .chart-btn.active {
+            background-color: #0d47a1;
+        }
+        
+        footer {
+            padding: 1rem 2rem;
+            text-align: left;
+            color: #333;
+        }
+        
+        .author {
+            font-style: italic;
+            font-size: 0.9rem;
+            position: relative;
+            float: left;
+        }
+        
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-size: 1.5rem;
+            color: #555;
+        }
+        
+        .zoom-instructions {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>RON árfolyamának összehasonlítása EUR és USD árfolyamával</h1>
+    </header>
+    
+    <main>
+        <div class="chart-buttons">
+            <button class="chart-btn active" data-chart="chart1">EUR-RON és USD-RON árfolyam</button>
+            <button class="chart-btn" data-chart="chart2">Változás EUR-RON és USD-RON (%)</button>
+            <button class="chart-btn" data-chart="chart3">TOP 5 kiugró árfolyamváltozás</button>
+            <button class="chart-btn" data-chart="chart4">EUR-RON/USD-RON arány</button>
+        </div>
+        
+        <div class="chart-container" id="chartArea">
+            <div class="loading">Adatok betöltése folyamatban...</div>
+        </div>
+        
+        <div class="zoom-instructions" id="zoomInstructions" style="display: none;">
+            Zoom használata: görgessen az egérrel a nagyításhoz/kicsinyítéshez, vagy húzza ki a kívánt területet. Dupla kattintás a visszaállításhoz.
+        </div>
+    </main>
+    
+    <footer>
+        <div class="author">by Bak-Menyhárt Sándor & Papp Szabolcs</div>
+    </footer>
+
+    <!-- Szükséges könyvtárak betöltése -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html> 
